@@ -8,3 +8,8 @@ C:\Users\Daniel\Dropbox\programing on my own\houser\houser\bin\houser.pdb
 C:\Users\Daniel\Dropbox\programing on my own\houser\houser\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Daniel\Dropbox\programing on my own\houser\houser\obj\Debug\houser.dll
 C:\Users\Daniel\Dropbox\programing on my own\houser\houser\obj\Debug\houser.pdb
+C:\Users\Daniel\GitProjectsPersonal\Houser\houser\bin\houser.dll
+C:\Users\Daniel\GitProjectsPersonal\Houser\houser\bin\houser.pdb
+C:\Users\Daniel\GitProjectsPersonal\Houser\houser\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Daniel\GitProjectsPersonal\Houser\houser\obj\Debug\houser.dll
+C:\Users\Daniel\GitProjectsPersonal\Houser\houser\obj\Debug\houser.pdb

@@ -12,6 +12,8 @@
         <span>press this button to populate the sales data</span>
         <asp:Button ID="btnPopulateData" Text="Get Data" runat="server" Visible="true" 
             onclick="btnPopulateData_Click"/>
+        <asp:DropDownList ID="ddlSaleDate" runat="server" 
+            onselectedindexchanged="ddlSaleDate_SelectedIndexChanged" />
     </div>
     </form>
     

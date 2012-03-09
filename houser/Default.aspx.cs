@@ -15,6 +15,8 @@ namespace houser
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ddlSaleDate.Items.Add("03/15/2012");
+            ddlSaleDate.Items.Add("03/20/2012");
         }
 
         /// <summary>
@@ -69,11 +71,22 @@ namespace houser
             return PageScraper.GetPropertyData(webRequestData);
         }
 
+        #region UI events
+        
+
         protected void btnPopulateData_Click(object sender, EventArgs e)
         {
             BuildAllPropertyData();
         }
 
+        protected void ddlSaleDate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
         
+
     }
 }

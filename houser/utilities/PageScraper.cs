@@ -67,5 +67,18 @@ namespace houser.utilities
             }
             return "this will probably be a dictionary or table or something like that" + file;
         }
+
+        public static List<string> GetSheriffSaleDates(string file)
+        {
+            string dataSubSet = Regex.Match(file, "<form name=\"SheriffSale\"(.*?)</form>", RegexOptions.Singleline).Groups[1].Value.Trim();
+            MatchCollection dateMatches = Regex.Matches(dataSubSet, "<option value=\"(.*?)\">", RegexOptions.Singleline);
+            List<string> dates = new List<string>();
+            foreach (Match dt in dateMatches)
+            {
+                dates.Add(dt.Groups[1].Value);
+            }
+            
+            return dates;
+        }
     }
 }

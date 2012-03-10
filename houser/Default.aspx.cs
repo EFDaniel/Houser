@@ -15,16 +15,23 @@ namespace houser
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ddlSaleDate.Items.Add("03/15/2012");
-            ddlSaleDate.Items.Add("03/20/2012");
+            if (!IsPostBack)
+            {
+                string sheriffSaleDatePage = GetWebRequest("http://oklahomacounty.org/sheriff/SheriffSales/");
+                List<string> dates = PageScraper.GetSheriffSaleDates(sheriffSaleDatePage);
+                foreach (var date in dates)
+                {
+                    ddlSaleDate.Items.Add(date);
+                }
+            }
         }
 
         /// <summary>
-        /// Build the entire data structure for all properties.  Includes comparable data, property specs, ect.
+        /// Build the entire data structure for all properties.  Includes comparable data, property specs, ect.  03%2f15%2f2012
         /// </summary>
-        private static void BuildAllPropertyData()
+        private static void BuildAllPropertyData(string saleDate)
         {
-            string sherifSaleUrl = "http://oklahomacounty.org/sheriff/SheriffSales/saledetail.asp?SaleDates=03%2f15%2f2012";
+            string sherifSaleUrl = "http://oklahomacounty.org/sheriff/SheriffSales/saledetail.asp?SaleDates="+saleDate;
             string sherifSaleWebRequestData = GetWebRequest(sherifSaleUrl);
             
             Dictionary<int, Dictionary<string, string>> propertyDictionary = ScrapeSherifSaleListingsX(sherifSaleWebRequestData);
@@ -76,7 +83,8 @@ namespace houser
 
         protected void btnPopulateData_Click(object sender, EventArgs e)
         {
-            BuildAllPropertyData();
+            string saleDate = ddlSaleDate.SelectedItem.Value.Replace("/", "%2f"); 
+            BuildAllPropertyData(saleDate);
         }
 
         protected void ddlSaleDate_SelectedIndexChanged(object sender, EventArgs e)

@@ -13,3 +13,8 @@ C:\Users\Daniel\GitProjectsPersonal\Houser\houser\bin\houser.pdb
 C:\Users\Daniel\GitProjectsPersonal\Houser\houser\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Daniel\GitProjectsPersonal\Houser\houser\obj\Debug\houser.dll
 C:\Users\Daniel\GitProjectsPersonal\Houser\houser\obj\Debug\houser.pdb
+F:\houser\houser\bin\houser.dll
+F:\houser\houser\bin\houser.pdb
+F:\houser\houser\obj\Debug\ResolveAssemblyReference.cache
+F:\houser\houser\obj\Debug\houser.dll
+F:\houser\houser\obj\Debug\houser.pdb

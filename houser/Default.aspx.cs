@@ -33,22 +33,13 @@ namespace houser
         {
             string sherifSaleUrl = "http://oklahomacounty.org/sheriff/SheriffSales/saledetail.asp?SaleDates="+saleDate;
             string sherifSaleWebRequestData = GetWebRequest(sherifSaleUrl);
-            List<string> testList = new List<string>();
             Dictionary<int, Dictionary<string, string>> propertyDictionary = ScrapeSherifSaleListingsX(sherifSaleWebRequestData);
             foreach (var property in propertyDictionary)
             {
-                foreach (var field in property.Value)
-                {
-                    string key = field.Key;
-                    string value = field.Value;
-                    if (field.Key == "8")
-                    {
-                        string propertyAssessorData = GetWebRequest(field.Value);
-                        string scrapedData = ScrapePropertyAssessorData(propertyAssessorData);
-                        testList.Add(scrapedData);
-                    }
-
-                }
+                string propertyAccountURL = property.Value["8"];
+                string propertyAssessorData = GetWebRequest(propertyAccountURL);
+                Dictionary<string, string> scrapedData = new Dictionary<string, string>(ScrapePropertyAssessorData(propertyAssessorData));
+                string similarPropertyData = GetWebRequest(scrapedData["SimilarPropURL"]);
             }
             string test = "break";
         }
@@ -75,7 +66,7 @@ namespace houser
             return PageScraper.Find(webRequestData);
         }
 
-        private static string ScrapePropertyAssessorData(string webRequestData)
+        private static Dictionary<string, string> ScrapePropertyAssessorData(string webRequestData)
         {
             return PageScraper.GetPropertyData(webRequestData);
         }

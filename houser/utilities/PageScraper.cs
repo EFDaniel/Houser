@@ -56,15 +56,25 @@ namespace houser.utilities
             return propertyGroup;
         }
 
-        public static string GetPropertyData(string file)
+        public static Dictionary<string, string> GetPropertyData(string file)
         {
-            MatchCollection propertyDataSubSet = Regex.Matches(file, "<table width=\\\"700\\\"(.*?)</table", RegexOptions.Singleline);
-            
-            string propertyType = Regex.Match(propertyDataSubSet[0].Groups[1].Value.Trim(), "Type:</font></b><font size=\\\"2\\\" color=\\\"#FF0000\\\">(.*?)</font", RegexOptions.Singleline).Groups[1].Value.Trim();
+            Dictionary<string, string> propertyDate = new Dictionary<string, string>();
+            propertyDate.Add("Type", Regex.Match(file, "Type:</font></b><font size=\\\"2\\\" color=\\\"#FF0000\\\">(.*?)</font", RegexOptions.Singleline).Groups[1].Value.Trim());
             string salesDocsDataSet = Regex.Match(file, ">Sales Documents/Deed History(.*?)>Non Sales Documents/Deed History", RegexOptions.Singleline).Groups[1].Value.Trim();
-            string saleDate = Regex.Match(salesDocsDataSet, "&nbsp;</font><font size=\\\"2\\\">(.*?)</font></td>", RegexOptions.Singleline).Groups[1].Value.Trim();
-            string salePrice = Regex.Match(salesDocsDataSet, "<p align=\\\"right\\\"><font size=\\\"2\\\">(.*?)</font></td>", RegexOptions.Singleline).Groups[1].Value.Trim();
-            return saleDate+salePrice;
+            MatchCollection saleDates = Regex.Matches(salesDocsDataSet, "&nbsp;</font><font size=\\\"2\\\">(.*?)</font></td>", RegexOptions.Singleline);
+            foreach (Match sd in saleDates)
+            {
+                propertyDate.Add("SaleDate", sd.Groups[1].Value.Trim());            
+            }
+            MatchCollection salePrices = Regex.Matches(salesDocsDataSet, "<p align=\\\"right\\\"><font size=\\\"2\\\">(.*?)</font></td>", RegexOptions.Singleline);
+            foreach (Match sp in salePrices)
+            {
+                propertyDate.Add("SalePrice", sp.Groups[1].Value.Trim());
+            }
+            
+            string urlSimilarPropertiesSubSet = Regex.Match(file, "name=\\\"loc2\\\"(.*?)Click for sales of similar properties", RegexOptions.Singleline).Groups[1].Value.Trim();
+            propertyDate.Add("SimilarPropURL", Regex.Match(urlSimilarPropertiesSubSet, "'(.*?)'", RegexOptions.Singleline).Groups[1].Value.Trim());
+            return propertyDate;
         }
 
         public static List<string> GetSheriffSaleDates(string file)

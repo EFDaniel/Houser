@@ -33,16 +33,19 @@ namespace houser
         {
             string sherifSaleUrl = "http://oklahomacounty.org/sheriff/SheriffSales/saledetail.asp?SaleDates="+saleDate;
             string sherifSaleWebRequestData = GetWebRequest(sherifSaleUrl);
-            Dictionary<int, Dictionary<string, string>> propertyDictionary = ScrapeSherifSaleListingsX(sherifSaleWebRequestData);
+            Dictionary<int, Dictionary<string, string>> propertyDictionary = PageScraper.Find(sherifSaleWebRequestData);
             foreach (var property in propertyDictionary)
             {
                 string propertyAccountURL = property.Value["8"];
                 string propertyAssessorData = GetWebRequest(propertyAccountURL);
-                Dictionary<string, string> scrapedData = new Dictionary<string, string>(ScrapePropertyAssessorData(propertyAssessorData));
+                Dictionary<string, string> scrapedData = new Dictionary<string, string>(PageScraper.GetPropertyData(propertyAssessorData));
                 string similarPropertyData = GetWebRequest(scrapedData["SimilarPropURL"]);
+                Dictionary<string, string> scrapedCoreData = new Dictionary<string,string>(PageScraper.GetSimilarData(similarPropertyData));
             }
             string test = "break";
         }
+
+        
 
         private static string GetWebRequest(string url)
         {
@@ -59,16 +62,6 @@ namespace houser
                 return strResults;
             }
             
-        }
-
-        private static Dictionary<int, Dictionary<string, string>> ScrapeSherifSaleListingsX(string webRequestData)
-        {
-            return PageScraper.Find(webRequestData);
-        }
-
-        private static Dictionary<string, string> ScrapePropertyAssessorData(string webRequestData)
-        {
-            return PageScraper.GetPropertyData(webRequestData);
         }
 
         #region UI events

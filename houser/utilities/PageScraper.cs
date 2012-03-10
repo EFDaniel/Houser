@@ -59,13 +59,12 @@ namespace houser.utilities
         public static string GetPropertyData(string file)
         {
             MatchCollection propertyDataSubSet = Regex.Matches(file, "<table width=\\\"700\\\"(.*?)</table", RegexOptions.Singleline);
-            string dataSubSetMatch = "";
-            foreach (Match pdss in propertyDataSubSet)
-            {
-                dataSubSetMatch = pdss.Groups[1].Value.Trim();
-                string propertyType = Regex.Match(dataSubSetMatch, "Type:</font></b><font size=\\\"2\\\" color=\\\"#FF0000\\\">(.*?)</font", RegexOptions.Singleline).Groups[1].Value.Trim();
-            }
-            return "this will probably be a dictionary or table or something like that" + file;
+            
+            string propertyType = Regex.Match(propertyDataSubSet[0].Groups[1].Value.Trim(), "Type:</font></b><font size=\\\"2\\\" color=\\\"#FF0000\\\">(.*?)</font", RegexOptions.Singleline).Groups[1].Value.Trim();
+            string salesDocsDataSet = Regex.Match(file, ">Sales Documents/Deed History(.*?)>Non Sales Documents/Deed History", RegexOptions.Singleline).Groups[1].Value.Trim();
+            string saleDate = Regex.Match(salesDocsDataSet, "&nbsp;</font><font size=\\\"2\\\">(.*?)</font></td>", RegexOptions.Singleline).Groups[1].Value.Trim();
+            string salePrice = Regex.Match(salesDocsDataSet, "<p align=\\\"right\\\"><font size=\\\"2\\\">(.*?)</font></td>", RegexOptions.Singleline).Groups[1].Value.Trim();
+            return saleDate+salePrice;
         }
 
         public static List<string> GetSheriffSaleDates(string file)

@@ -33,7 +33,7 @@ namespace houser
         {
             string sherifSaleUrl = "http://oklahomacounty.org/sheriff/SheriffSales/saledetail.asp?SaleDates="+saleDate;
             string sherifSaleWebRequestData = GetWebRequest(sherifSaleUrl);
-            
+            List<string> testList = new List<string>();
             Dictionary<int, Dictionary<string, string>> propertyDictionary = ScrapeSherifSaleListingsX(sherifSaleWebRequestData);
             foreach (var property in propertyDictionary)
             {
@@ -44,11 +44,13 @@ namespace houser
                     if (field.Key == "8")
                     {
                         string propertyAssessorData = GetWebRequest(field.Value);
-                        ScrapePropertyAssessorData(propertyAssessorData);
+                        string scrapedData = ScrapePropertyAssessorData(propertyAssessorData);
+                        testList.Add(scrapedData);
                     }
 
                 }
             }
+            string test = "break";
         }
 
         private static string GetWebRequest(string url)

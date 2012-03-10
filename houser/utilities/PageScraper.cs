@@ -92,18 +92,15 @@ namespace houser.utilities
 
         internal static Dictionary<string, string> GetSimilarData(string file)
         {
-            Dictionary<string, string> ubjectPropertyFields = new Dictionary<string, string>();
+            Dictionary<string, string> subjectPropertyFields = new Dictionary<string, string>();
             string subjectPropertyTableSubSet = Regex.Match(file, "Property Information</font>(.*?)>Sales are pulled", RegexOptions.Singleline).Groups[1].Value.Trim();
             string subjectPropertyTable = Regex.Match(subjectPropertyTableSubSet, "<tbody>(.*?)</tbody>", RegexOptions.Singleline).Groups[1].Value.Trim();
-            MatchCollection subjectPropsRow = Regex.Matches(subjectPropertyTableSubSet, "<tr>(.*?)</tr>", RegexOptions.Singleline);
-            foreach (Match spr in subjectPropsRow)
-            {
-                MatchCollection subjectPropsFields = Regex.Matches(spr.Groups[1].Value.Trim(), "<font size=\\\"2\\\" color=\\\"#FFFFFF\\\">(.*?)</font>", RegexOptions.Singleline);
-                foreach (Match spf in subjectPropsFields)
-                {
-
-                }
-            }
+            string yearBuild;
+            string sqft;
+            string builtAs;
+            string bedrooms;
+            string bathrooms;
+            string exterior;
             throw new NotImplementedException();
         }
     }

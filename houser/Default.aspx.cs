@@ -31,16 +31,45 @@ namespace houser
         /// </summary>
         private static void BuildAllPropertyData(string saleDate)
         {
+            Dictionary<string, Dictionary<int, Dictionary<string,string>>> allPropertyData = new Dictionary<string, Dictionary<int, Dictionary<string,string>>>();
+            Dictionary<int, Dictionary<string, string>> allCoreDataTMP = new Dictionary<int, Dictionary<string, string>>();
+            Dictionary<string, string> allFieldDataTMP = new Dictionary<string, string>();
             string sherifSaleUrl = "http://oklahomacounty.org/sheriff/SheriffSales/saledetail.asp?SaleDates="+saleDate;
             string sherifSaleWebRequestData = GetWebRequest(sherifSaleUrl);
-            Dictionary<int, Dictionary<string, string>> propertyDictionary = PageScraper.Find(sherifSaleWebRequestData);
-            foreach (var property in propertyDictionary)
+            string currentPropertyAddress = "No Address Found";
+            Dictionary<int, Dictionary<string, string>> SheriffSaleProperties = PageScraper.Find(sherifSaleWebRequestData);
+            foreach (var property in SheriffSaleProperties)
             {
+                currentPropertyAddress = property.Value["Address"];
+                foreach (var pItem in property.Value)
+                {
+                    allFieldDataTMP.Add(pItem.Key, pItem.Value);
+                }
                 string propertyAccountURL = property.Value["8"];
-                string propertyAssessorData = GetWebRequest(propertyAccountURL);
+                string propertyAssessorData = propertyAccountURL != ""? GetWebRequest(propertyAccountURL) : "Error";
                 Dictionary<string, string> scrapedData = new Dictionary<string, string>(PageScraper.GetPropertyData(propertyAssessorData));
-                string similarPropertyData = GetWebRequest(scrapedData["SimilarPropURL"]);
-                Dictionary<string, string> scrapedCoreData = new Dictionary<string,string>(PageScraper.GetSimilarData(similarPropertyData));
+                foreach (var sdItem in scrapedData)
+                {
+                    allFieldDataTMP.Add(sdItem.Key, sdItem.Value);
+                }
+                string similarPropertyData = scrapedData["SimilarPropURL"] != "" ? GetWebRequest(scrapedData["SimilarPropURL"]) : "Error";
+                Dictionary<int, Dictionary<string, string>> scrapedCoreData = new Dictionary<int, Dictionary<string, string>>(PageScraper.GetSimilarData(similarPropertyData));
+                int i = 0;
+                foreach (var scdItem in scrapedCoreData)
+                {
+                    foreach (var scdSubItem in scdItem.Value)
+                        {
+                            allFieldDataTMP.Add(scdSubItem.Key, scdSubItem.Value);
+                        }
+                    //if (scdItem.Key == 0)
+                    //    allCoreDataTMP.Add(0, allFieldDataTMP);
+                    //else
+                    allCoreDataTMP.Add(i, new Dictionary<string,string>(allFieldDataTMP));
+                    allFieldDataTMP.Clear();
+                    i++;
+                }
+                allPropertyData.Add(currentPropertyAddress, new Dictionary<int, Dictionary<string,string>>(allCoreDataTMP));
+                allCoreDataTMP.Clear();
             }
             string test = "break";
         }

@@ -18,7 +18,7 @@ namespace houser
         {
             if (!IsPostBack)
             {
-                string sheriffSaleDatePage = GetWebRequest("http://oklahomacounty.org/sheriff/SheriffSales/");
+                string sheriffSaleDatePage = GetWebRequest("http://oklahomacounty.org/sheriff/SheriffSales/", "SheriffSales");
                 List<string> dates = PageScraper.GetSheriffSaleDates(sheriffSaleDatePage);
                 foreach (var date in dates)
                 {
@@ -36,68 +36,73 @@ namespace houser
             Dictionary<int, Dictionary<string, string>> allCoreDataTMP = new Dictionary<int, Dictionary<string, string>>();
             Dictionary<string, string> allFieldDataTMP = new Dictionary<string, string>();
             string sherifSaleUrl = "http://oklahomacounty.org/sheriff/SheriffSales/saledetail.asp?SaleDates="+saleDate;
-            string sherifSaleWebRequestData = GetWebRequest(sherifSaleUrl);
+            string sherifSaleWebRequestData = GetWebRequest(sherifSaleUrl, saleDate);
             string currentPropertyAddress = "No Address Found";
             Dictionary<int, Dictionary<string, string>> SheriffSaleProperties = PageScraper.Find(sherifSaleWebRequestData);
-            int testlimit = 0;
+            
             foreach (var property in SheriffSaleProperties)
             {
-                // Remove after we are done testing.
-                if (testlimit < 4)
+                
+                currentPropertyAddress = property.Value["Address"];
+                foreach (var pItem in property.Value)
                 {
-                    currentPropertyAddress = property.Value["Address"];
-                    foreach (var pItem in property.Value)
-                    {
-                        allFieldDataTMP.Add(pItem.Key, pItem.Value);
-                    }
-                    string propertyAccountURL = property.Value["8"];
-                    string propertyAssessorData = propertyAccountURL != "" ? GetWebRequest(propertyAccountURL) : "Error";
-                    Dictionary<string, string> scrapedData = new Dictionary<string, string>(PageScraper.GetPropertyData(propertyAssessorData));
-                    foreach (var sdItem in scrapedData)
-                    {
-                        allFieldDataTMP.Add(sdItem.Key, sdItem.Value);
-                    }
-                    string similarPropertyData = scrapedData["SimilarPropURL"] != "" ? GetWebRequest(scrapedData["SimilarPropURL"]) : "Error";
-                    Dictionary<int, Dictionary<string, string>> scrapedCoreData = new Dictionary<int, Dictionary<string, string>>(PageScraper.GetSimilarData(similarPropertyData));
-                    int i = 0;
-                    foreach (var scdItem in scrapedCoreData)
-                    {
-                        foreach (var scdSubItem in scdItem.Value)
-                        {
-                            allFieldDataTMP.Add(scdSubItem.Key, scdSubItem.Value);
-                        }
-                        //if (scdItem.Key == 0)
-                        //    allCoreDataTMP.Add(0, allFieldDataTMP);
-                        //else
-                        allCoreDataTMP.Add(i, new Dictionary<string, string>(allFieldDataTMP));
-                        allFieldDataTMP.Clear();
-                        i++;
-                    }
-                    allPropertyData.Add(currentPropertyAddress, new Dictionary<int, Dictionary<string, string>>(allCoreDataTMP));
-                    allCoreDataTMP.Clear();
-                    testlimit++;
+                    allFieldDataTMP.Add(pItem.Key, pItem.Value);
                 }
+                string propertyAccountURL = property.Value["8"];
+                string fileName = propertyAccountURL.Substring(67);
+                string propertyAssessorData = propertyAccountURL != "" ? GetWebRequest(propertyAccountURL, fileName) : "Error";
+                Dictionary<string, string> scrapedData = new Dictionary<string, string>(PageScraper.GetPropertyData(propertyAssessorData));
+                foreach (var sdItem in scrapedData)
+                {
+                    allFieldDataTMP.Add(sdItem.Key, sdItem.Value);
+                }
+                string similarPropertyData = scrapedData["SimilarPropURL"] != "" ? GetWebRequest(scrapedData["SimilarPropURL"], "C"+fileName) : "Error";
+                Dictionary<int, Dictionary<string, string>> scrapedCoreData = new Dictionary<int, Dictionary<string, string>>(PageScraper.GetSimilarData(similarPropertyData));
+                int i = 0;
+                foreach (var scdItem in scrapedCoreData)
+                {
+                    foreach (var scdSubItem in scdItem.Value)
+                    {
+                        allFieldDataTMP.Add(scdSubItem.Key, scdSubItem.Value);
+                    }
+                    //if (scdItem.Key == 0)
+                    //    allCoreDataTMP.Add(0, allFieldDataTMP);
+                    //else
+                    allCoreDataTMP.Add(i, new Dictionary<string, string>(allFieldDataTMP));
+                    allFieldDataTMP.Clear();
+                    i++;
+                }
+                allPropertyData.Add(currentPropertyAddress, new Dictionary<int, Dictionary<string, string>>(allCoreDataTMP));
+                allCoreDataTMP.Clear();
             }
             return allPropertyData;
         }
 
         
 
-        private static string GetWebRequest(string url)
+        private static string GetWebRequest(string url, string fileName)
         {
+            if (!File.Exists(@"F:\houser\houser\webCache\"+fileName+".txt"))
+            {
             string strResults = "";
             WebResponse objResponse;
             WebRequest objRequest = System.Net.HttpWebRequest.Create(url);
 
             objResponse = objRequest.GetResponse();
-
+            
+            
             using (StreamReader sr = new StreamReader(objResponse.GetResponseStream()))
             {
                 strResults = sr.ReadToEnd();
                 sr.Close();
+                System.IO.File.WriteAllText(@"F:\houser\houser\webCache\" + fileName + ".txt", strResults);
                 return strResults;
             }
-            
+            }
+            else
+            {
+                return System.IO.File.ReadAllText(@"F:\houser\houser\webCache\" + fileName + ".txt");
+            }
         }
 
         #region UI events
@@ -114,24 +119,26 @@ namespace houser
                 displayPanel.Controls.Add(new LiteralControl("<td>"+property.Key+"</td></tr><tr class=\"property\">"));
                 foreach (var field in property.Value)
                 {
-                    displayPanel.Controls.Add(new LiteralControl("<td>" + Convert.ToString(field.Key == 0? "Subject Property" : "Compare Property") + "</td></tr><tr class=\"fieldTitle\">"));
+                    
                     if (field.Key < 2)
                     {
+                        displayPanel.Controls.Add(new LiteralControl("<td>" + Convert.ToString(field.Key == 0 ? "Subject Property" : "Compare Property") + "</td></tr><tr class=\"fieldTitle\">"));
                         foreach (var f in field.Value)
                         {
-                            displayPanel.Controls.Add(new LiteralControl("<td>" + f.Key + "</td>"));
+                            if (f.Key != "Plantiff" && f.Key != "Defendant" && f.Key != "Attorney" && f.Key != "Attorney Phone")
+                                displayPanel.Controls.Add(new LiteralControl("<td>" + f.Key + "</td>"));
                         }
                     }
                     displayPanel.Controls.Add(new LiteralControl("</tr><tr class=\"fieldValue\">"));
                     foreach (var f in field.Value)
                     {
                         if (f.Key == "8")
-                            displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\">See Assessors Page</a></td>"));
+                            displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\" target=\"_blank\">See Assessors Page</a></td>"));
                         else if (f.Key == "9")
-                            displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\">See Tax Info</a></td>"));
+                            displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\" target=\"_blank\">See Tax Info</a></td>"));
                         else if (f.Key == "SimilarPropURL")
                             displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\">See Comps</a></td>"));
-                        else
+                        else if (f.Key != "Plantiff" && f.Key != "Defendant" && f.Key != "Attorney" && f.Key != "Attorney Phone") 
                             displayPanel.Controls.Add(new LiteralControl("<td>" + f.Value + "</td>"));
                     }
                     displayPanel.Controls.Add(new LiteralControl("</tr>"));

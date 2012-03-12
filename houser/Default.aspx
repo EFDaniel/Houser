@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Houser App</title>
+    <link href="Styles/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server" visible="true">
@@ -14,6 +15,10 @@
             onclick="btnPopulateData_Click"/>
         <asp:DropDownList ID="ddlSaleDate" runat="server" 
             onselectedindexchanged="ddlSaleDate_SelectedIndexChanged" />
+    </div>
+    <div id="displayData">
+        <asp:Panel ID="displayPanel" runat="server">
+        </asp:Panel>
     </div>
     </form>
     

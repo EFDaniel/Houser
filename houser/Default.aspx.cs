@@ -82,7 +82,9 @@ namespace houser
 
         private static string GetWebRequest(string url, string fileName)
         {
-            if (!File.Exists(@"F:\houser\houser\webCache\"+fileName+".txt"))
+
+            //if (!File.Exists(@"C:\Users\Daniel\GitProjectsPersonal\Houser\houser\webCache\" + fileName + ".txt")) //work
+            if (!File.Exists(@"F:\houser\houser\webCache\" + fileName + ".txt"))
             {
             string strResults = "";
             WebResponse objResponse;
@@ -95,12 +97,14 @@ namespace houser
             {
                 strResults = sr.ReadToEnd();
                 sr.Close();
+                //System.IO.File.WriteAllText(@"C:\Users\Daniel\GitProjectsPersonal\Houser\houser\webCache\" + fileName + ".txt", strResults);  //work
                 System.IO.File.WriteAllText(@"F:\houser\houser\webCache\" + fileName + ".txt", strResults);
                 return strResults;
             }
             }
             else
             {
+                //return System.IO.File.ReadAllText(@"C:\Users\Daniel\GitProjectsPersonal\Houser\houser\webCache\" + fileName + ".txt"); // work
                 return System.IO.File.ReadAllText(@"F:\houser\houser\webCache\" + fileName + ".txt");
             }
         }

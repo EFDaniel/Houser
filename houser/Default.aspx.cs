@@ -151,7 +151,7 @@ namespace houser
                         color = purple;
                     displayPanel.Controls.Add(new LiteralControl("<table class=\"Address\">"));
                     displayPanel.Controls.Add(new LiteralControl("<tr class=\"subjectProperty\">"));
-                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#" + blue + "\">" + property.Key + "</td><td class=\"priceRank\" bgcolor=\"#" + color + "\">" + ppsftDiff + "</td></tr><tr class=\"property\">"));
+                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#" + blue + "\">" + property.Key + "</td><td class=\"priceRank\" bgcolor=\"#" + color + "\">" + ppsftDiff + "</td><td>Minimum Bid = " + Convert.ToString(Convert.ToDouble((property.Value[0]["Appraisal Value"]))*.66) + "</tr><tr class=\"property\">"));
                     foreach (var field in property.Value)
                     {
 

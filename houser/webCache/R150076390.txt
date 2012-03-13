@@ -257,7 +257,7 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
       <td colspan="3" bgcolor="#394A7B" style="border-style:solid; border-width:0px; ">
 
-      <p align="right"><font color="#FFFFFF" size="2">Screen Produced &nbsp;&nbsp;3/12/2012 11:46:45 PM&nbsp;</font></td>
+      <p align="right"><font color="#FFFFFF" size="2">Screen Produced &nbsp;&nbsp;3/13/2012 12:18:38 PM&nbsp;</font></td>
 
       <td height="12" width="8" bgcolor="#FFFFFF">&nbsp;</td>
 
@@ -277,8 +277,489 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
                         <tbody>
 
-                                    <tr><td colspan=47 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">&nbsp;<b><font size="2">Account #:</font></b></td>
+
+                                                <td colspan="3"><font size="2" color="#FF0000">
+
+                                                R150076390&nbsp;&nbsp;&nbsp; </font>
+
+                                                <b><font size="2">
+
+                                                Type:</font></b><font size="2" color="#FF0000"> Residential</font></td>
+
+                                                <td><b><font size="2">Physical Address:</font></b></td>
+
+                                                <td colspan="4" style="border-right: 1px solid #EBEBEB"><font size="2">
+
+                                                812   ASKEW DR</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">
+
+                                                <font color="#3399FF">&nbsp;<b><font size="2">Business Name:</font></b></font></td>
+
+                                                <td colspan="3"><font size="2" color="#3399FF">
+
+                                                &nbsp;</font></td>
+
+                                                <td><b><font size="2">Auto Map Parcel:</font></b><font size="2">
+
+                                                </font></td>
+
+                                                <td colspan="4" style="border-right: 1px solid #EBEBEB"><font size="1">
+
+                                                <input type="button" name="loc7"  onClick="window.open ('http://oklahoma.latitudegeo.com/imf/imf.jsp?site=oklahoma&qlyr=9&qzoom=true&qbuf=250&qhlt=true&qry=OKLAHOMA_SQL.PARCEL.PIN%3D%271414150076390%27');" value="Map Parcel" style="font-family:Times New Roman; color:#000000; font-size:9pt"></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">&nbsp;<b><font size="2">Owner Name1:</font></b></td>
+
+                                                <td colspan="3"><font size="2">
+
+                                                GARBUTT ROBERT C</font></td>
+
+                                                <td><b><font size="2">1/4 Section #:</font></b></td>
+
+                                                <td colspan="4" style="border-right: 1px solid #EBEBEB"><font size="2">
+
+                                                1414</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">&nbsp;<b><font size="2">Owner Name2:</font></b></td>
+
+                                                <td colspan="3"><font size="2">
+
+                                                GARBUTT DONALD L & ERIKA E</font></td>
+
+                                                <td><b><font size="2">Parent Account:</font></b></td>
+
+                                                <td colspan="4" style="border-right: 1px solid #EBEBEB"><font size="2">
+
+                                                  &nbsp;</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">&nbsp;<b><font size="2">Mailing Address:</font></b></td>
+
+                                                <td colspan="3"><font size="2">
+
+                                                204 W ERCOUPE DR</font></td>
+
+                                                <td><b><font size="2">Taxing District:</font></b><font size="2">
+
+                                                </font></td>
+
+                                                <td colspan="4" style="border-right: 1px solid #EBEBEB"><font size="1">
+
+                                                <input type="button" name="loc8"  onClick="window.open ('http://www.oklahomacounty.org/assessor/taxrates.htm#552');" value="TXD 552" style="font-family:Times New Roman; color:#000000; font-size:8pt; float:left"></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB"><font size="2">&nbsp;&nbsp;
+
+                                                </font></td>
+
+                                                <td colspan="3"><font size="2">
+
+                                                &nbsp;</font></td>
+
+                                                <td><b><font size="2">School System:</font></b></td>
+
+                                                <td colspan="4" style="border-right: 1px solid #EBEBEB"><font size="2">
+
+                                                Mid-Del #52</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">&nbsp;<b><font size="2">City, 
+
+                                                St. &amp; Zip:</font></b></td>
+
+                                                <td colspan="3"><font size="2">
+
+                                                MIDWEST CITY, OK&nbsp;&nbsp; 731105516</font></td>
+
+                                                <td><b><font size="2"># of Bldgs: </font></b><font size="2">
+
+                                                1</font></td>
+
+                                                <td colspan="4" style="border-right: 1px solid #EBEBEB"><b><font size="2">Acres:</font></b><font size="2">
+
+                                                                .1915</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-right:2px solid #FED907; border-top:2px solid #FED907; border-left:2px solid #FED907; " bgcolor="#FEF4BC"><font size="1">
+
+                                                <input type="button" name="loc14"  onClick="window.open ('http://www.oklahomacounty.org/assessor/Searches/AN-P_Real.asp?ParcelNumber=1414150076390');" value="Personal Property " style="font-family:Times New Roman; color:#000000; font-size:8pt; float:left"></td>
+
+                                                <td colspan="3" bgcolor="#394A7B" style="border: 2px solid #000000">
+
+                                                <p align="center"><font size="2" color="#FFFFFF">Property Value Information&nbsp;&nbsp; </font>
+
+                                                <font size="2">&nbsp;&nbsp;
+												<input type="button" name="loc18"  onClick="window.open ('http://www.oklahomacounty.org/assessor/Searches/AN-R_HistoricalView.asp?Accountno=R150076390');" value="Value History" style="font-family:Times New Roman; color:#0000FF; font-size:8pt;float:center"></font></td>
+
+                                                <td><b><font size="2">&nbsp;Lot Width:</font></b><font size="2"> 60</font></td>
+
+                                                <td colspan="4" style="border-right: 1px solid #EBEBEB">
+
+                                                <b><font size="2">Depth:</font></b><font size="2">&nbsp; 139</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-right:2px solid #FED907; border-bottom:2px solid #FED907; border-left:2px solid #FED907; " bgcolor="#FEF4BC">
+
+                                                <p align="center"><font size="1">Cross reference for<br>
+
+                                                Personal Property</font></td>
+
+                                                <td bgcolor="#394A7B" align="center" width="239" style="border-left: 2px solid #000000; border-bottom: 2px solid #000000" colspan="2"><font size="2" color="#FFFFFF">2011</font></td>
+
+                                                <td bgcolor="#394A7B" align="center" width="237" style="border-left: 2px solid #000000; border-right: 2px solid #000000; border-bottom: 2px solid #000000"><font size="2" color="#FFFFFF">2012</font></td>
+
+                                                <td bgcolor="#394A7B" style="border-right: 2px solid #000000; border-top: 2px solid #000000; border-bottom: 2px solid #000000">
+
+      <p align="center"><font size="2" color="#FFFFFF">Sketch</font></td>
+
+                                                <td bgcolor="#394A7B" colspan="4" style="border-right: 2px solid #000000; border-top: 2px solid #000000; border-bottom: 2px solid #000000">
+
+      <p align="center"><font size="2" color="#FFFFFF">Photo</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">&nbsp;<b><font size="2">Market Value</font></b></td>
+
+                                                <td align="right" width="239" style="border-left: 2px solid #000000" colspan="2"><font size="2">
+
+                                                          51,571&nbsp;&nbsp; </font></td>
+
+                                                <td align="right" width="237" style="border-left: 2px solid #000000; border-right: 2px solid #000000">
+
+                                                <font size="2">
+
+                                                June 2012&nbsp;&nbsp; </font></td>
+
+
+
+                                                <td rowspan="7" bgcolor="#FFFFCC" height="84" style="border-right: 2px solid #000000; border-bottom: 2px solid #000000">
+
+                                                <p align="center">
+
+      <font size="2">
+
+      <a target="_blank" href="Sketches/sketchfile/1414/R150076390001.jpg">
+
+      <img border="2" src="Sketches/sketchfile/1414/R150076390001.jpg" width="100" height="80" align="top" vspace="1"></a></font><br>
+
+                                                <b><font size="2">If Available</font></b></td>
+
+                                                <td rowspan="3" align="center" bgcolor="#FFFFCC">
+
+      <font size="2">
+
+                        <a target="_blank" href="sketches/picfile/1414/R150076390001qA.jpg">
+
+                        <img border="1" src="sketches/picfile/1414/R150076390001qA.jpg" align="middle" width="35" height="27" hspace="1" vspace="4"></a></font><font size="1"><br>
+
+                        2012</font></td>
+
+                                                <td rowspan="3" align="center" bgcolor="#FFFFCC">
+
+      <font size="2">
+
+                        <a target="_blank" href="sketches/picfile/1414/R150076390001rA.jpg">
+
+                        <img border="1" src="sketches/picfile/1414/R150076390001rA.jpg" align="middle" width="35" height="27" hspace="1" vspace="4"></a></font><font size="1"><br>
+
+                        2011</font></td>
+
+                                                <td rowspan="3" align="center" bgcolor="#FFFFCC">
+
+      <font size="2">
+
+                        <a target="_blank" href="sketches/picfile/1414/R150076390001sA.jpg">
+
+                        <img border="1" src="sketches/picfile/1414/R150076390001sA.jpg" align="middle" width="35" height="27" hspace="1" vspace="4"></a></font><font size="1"><br>
+
+                        2010</font></td>
+
+                                                <td rowspan="3" align="center" bgcolor="#FFFFCC">
+
+      <font size="2">
+
+                        <a target="_blank" href="sketches/picfile/1414/R150076390001tA.jpg">
+
+                        <img border="1" src="sketches/picfile/1414/R150076390001tA.jpg" align="middle" width="35" height="27" hspace="1" vspace="4"></a></font><font size="1"><br>
+
+                        2009</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">
+
+      <b><font size="2">&nbsp;<a href="../5.htm">Taxable Market</a></font></b></td>
+
+                                                <td align="right" width="239" style="border-left: 2px solid #000000" colspan="2"><font size="2">
+
+                                                          46,854&nbsp;&nbsp; </font></td>
+
+                                                <td align="right" width="237" style="border-left: 2px solid #000000; border-right: 2px solid #000000">
+
+                                                <font size="2">
+
+                                                June 2012&nbsp;&nbsp; </font></td>
+
+
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">
+
+      <b><font size="2">&nbsp;Gross Assessed</font></b></td>
+
+                                                <td align="right" width="239" style="border-left: 2px solid #000000; border-bottom: 1px solid #EBEBEB" colspan="2"><font size="2">
+
+                                                           5,153&nbsp;&nbsp; </font></td>
+
+                                                <td align="right" width="237" style="border-left: 2px solid #000000; border-right: 2px solid #000000; border-bottom: 1px solid #EBEBEB">
+
+                                                <font size="2">
+
+                                                June 2012&nbsp;&nbsp; </font></td>
+
+
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">
+
+      <b><font size="2">&nbsp;</font></b><font size="2"><b>Exemptions</b></font></td>
+
+                                                <td align="right" width="239" style="border-left: 2px solid #000000" colspan="2"><font size="2">
+
+                                                <font color="#FF0000">-               0</font>&nbsp;&nbsp; </font></td>
+
+                                                <td align="right" width="237" style="border-left: 2px solid #000000; border-right: 2px solid #000000"><font size="2">
+
+                                                <font color="#FF0000">-               0</font>&nbsp;&nbsp; </font></td>
+
+                                                <td rowspan="3" align="center" bgcolor="#FFFFCC">
+
+      <font size="2"><a target="_blank" href="sketches/picfile/1414/R150076390001uA.jpg">
+
+                        <img border="1" src="sketches/picfile/1414/R150076390001uA.jpg" align="middle" width="35" height="27" hspace="1" vspace="4"></a></font><font size="1"><br>
+
+                        2008</font></td>
+
+                                                <td rowspan="3" align="center" bgcolor="#FFFFCC">
+
+      <font size="2">
+
+                        <a target="_blank" href="sketches/picfile/1414/R150076390001vA.jpg">
+
+                        <img border="1" src="sketches/picfile/1414/R150076390001vA.jpg" align="middle" width="35" height="27" hspace="1" vspace="4"></a></font><font size="1"><br>
+
+                        2007</font></td>
+
+                                                <td rowspan="3" align="center" bgcolor="#FFFFCC">
+
+      <font size="2"><a target="_blank" href="sketches/picfile/1414/R150076390001wA.jpg">
+
+                        <img border="1" src="sketches/picfile/1414/R150076390001wA.jpg" align="middle" width="35" height="27" hspace="1" vspace="4"></a></font><font size="1"><br>
+
+                        2006</font></td>
+
+                                                <td rowspan="3" align="center" bgcolor="#FFFFCC">
+
+      <font size="2"><a target="_blank" href="sketches/picfile/1414/R150076390001xA.jpg">
+
+                        <img border="1" src="sketches/picfile/1414/R150076390001xA.jpg" align="middle" width="35" height="27" hspace="1" vspace="4"></a></font><font size="1"><br>
+
+                        2005</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">
+
+      <b><font size="2">&nbsp;Net Assessed</font></b></td>
+
+                                                <td align="right" width="239" style="border-left: 2px solid #000000; border-bottom: 1px solid #EBEBEB" colspan="2"><font size="2">
+
+                                                           5,153&nbsp;&nbsp; </font></td>
+
+                                                <td align="right" width="237" style="border-left: 2px solid #000000; border-right: 2px solid #000000; border-bottom: 1px solid #EBEBEB">
+
+                                                <font size="2">
+
+                                                June 2012&nbsp;&nbsp; </font></td>
+
+
+
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">
+
+                                                <font size="2">&nbsp;</font><b><font size="2">Tax Rate</font></b></td>
+
+                                                <td align="right" width="239" style="border-left: 2px solid #000000; border-bottom: 2px solid #000000" colspan="2"><font size="2">
+
+                                                 112.50&nbsp;&nbsp; </font></td>
+
+                                                <td align="right" width="237" style="border-bottom:2px solid #000000; border-left:2px solid #000000; border-right:2px solid #000000; ">
+
+                                                <font size="2">
+
+                                                November 2012&nbsp;&nbsp; </font></td>
+
+
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">
+
+                                                <font size="2">&nbsp;</font><b><font size="2">Land Value</font></b></td>
+
+                                                <td width="239" align="right" colspan="2"><font size="2">
+
+                                                &nbsp;&nbsp; </font></td>
+
+                                                <td align="right" width="237" style="border-left:2px solid #000000; border-right:2px solid #000000; border-bottom:2px solid #000000; "><font size="2">
+
+                                                          14,220&nbsp;&nbsp; </font></td>
+
+                                                <td colspan="4" bgcolor="#394A7B" style="border-right: 2px solid #000000; border-top: 2px solid #000000; border-bottom: 2px solid #000000">
+
+                                                <p align="center">
+
+      <i><font size="1" color="#FFFFFF">*All Photos may
+
+                        not be Available</font></i></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td bgcolor="#FFFFCC" style="border-left: 2px solid #FF0000; border-top: 2px solid #FF0000; border-bottom: 2px solid #FF0000">
+
+                                                <font size="1"><input type="button" name="loc10"  onClick="window.open ('http://www.oklahomacounty.org/assessor/TaxSavingsMeasures.htm');" value="2011 Tax Savings " style="font-family:Times New Roman; color:#000000; font-size:8pt; float:left"></td>
+
+                                                <td width="120" bgcolor="#FFFFCC" style="border-top: 2px solid #FF0000; border-bottom: 2px solid #FF0000">
+
+                                                <p align="left"><font size="2">
+
+                                                &nbsp;See details</font></td>
+
+                                                <td width="119" bgcolor="#FFFFCC" style="border-right: 2px solid #FF0000; border-top: 2px solid #FF0000; border-bottom: 2px solid #FF0000">
+
+                                                <p align="right"><font size="2">
+
+                                                              $58&nbsp;&nbsp; </font></td>
+
+                                                <td width="237">&nbsp;</td>
+
+                                                <td colspan="5" style="border-right: 1px solid #EBEBEB">
+
+                                                <font size="2">
+
+                                                <input type="button" name="loc9" onClick="window.open ('http://www.oklahomacounty.org/treasurer/AccountNumberResults.asp?PropertyID=150076390');" value="Click to View taxes on this property" style="float: left; font-family:Times New Roman; color:#000000; font-size:9pt" onClick="javascript: _gaq.push(['_trackPageview', '/downloads/View_Taxes']); "></font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB" colspan="2">
+
+                                                
+
+                                                </td>
+
+                                                <td colspan="6"><font size="2">
+
+                                                <b>Section:</b>&nbsp;
+
+                                                4
+
+                                                <b>&nbsp;Township:&nbsp; </b>11N
+
+                                                <b>&nbsp;Range: </b> &nbsp;2W
+
+                                                <b>&nbsp;QTR:&nbsp; </b>
+
+                                                SE<b>&nbsp; 
+
+                                                QTR QTR:&nbsp; </b>&nbsp;</font></td>
+
+                                                <td style="border-right: 1px solid #EBEBEB">&nbsp; </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB">&nbsp;<b><font size="2">Subdivision/Legal<br>
+
+&nbsp;Description:</font></b></td>
+
+                                                <td colspan="8" bgcolor="#FFFFCC" style="border-right:2px solid #000000; border-left:2px solid #000000; border-top:2px solid #000000; "><font size="2">
+
+                                                &nbsp;</font><font style="font-size: 9pt"><a href="SubdivSearch.asp?SubDivision=BILL+ATKINSON+RANCHT+B3%2D11">BILL ATKINSON RANCHT B3-11</a>&nbsp;&nbsp; Block:
+
+                                                007&nbsp;
+
+                                                Lot: 024</font><font style="font-size: 8pt"> </font>
+
+                                                <font size="2">&nbsp;<input type="button" name="loc17"  onClick="window.open ('http://www.oklahomacounty.org/assessor/Searches/SubdivSearchSalesDate.asp?SUBNO=15007');" value="Subdivision Sales" style="font-family:Times New Roman; color:#0000FF; font-size:8pt;float:center"></font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #EBEBEB" valign="top">
+
+      <b><font size="2">&nbsp;</font></b></td>
+
+                                                <td colspan="8" style="border-left: 2px solid #000000; border-right: 2px solid #000000; border-bottom: 2px solid #000000"><font size="2">
+
+                                                &nbsp;&nbsp;</font></td>
+
+                                    </tr>
+
+                                    </tbody>
 
                         </table>
 
@@ -304,8 +785,15 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
                         <tbody>
 
-                                    <tr><td colspan=7 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+                                    <tr>
+
+                                                <td style="border-right: 1px solid #EBEBEB">
+
+                                                <input type="button" name="loc2" onClick="go('http://www.oklahomacounty.org/assessor/searches/compsalesmodel.asp?Accountno=R150076390&SUBJECTPARCELNUMBER=1414150076390&NBHD=1414&BLTASID=1&TOTALSF=756&YRBLT=1950');" value="Click for sales of similar properties" style="float: left; font-family:Times New Roman; color:#000000; font-size:10pt"><input type="button" name="loc3" onClick="go('http://www.oklahomacounty.org/assessor/searches/compsalesmodellimit.asp?Accountno=R150076390&SUBJECTPARCELNUMBER=1414150076390&NBHD=1414&BLTASID=1&TOTALSF=756&YRBLT=1950');" value="View the 10 newest sales" style="float: left; font-family:Times New Roman; color:#000000; font-size:10pt"></td>
+
+                                    </tr>
+
+                                    </tbody>
 
                         </table>
 
@@ -361,8 +849,51 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
   <tbody>
 
-    <tr><td colspan=5 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+    <tr>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+      2/24/2012</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+                48,524</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+                48,524</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+                     0</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+                 5,337</font></td>
+
+    </tr>
+
+    </tbody>
 
 </table>
 
@@ -447,8 +978,195 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
                         <tbody>
 
-                                    <tr><td colspan=9 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #C0C0C0; border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="right"><font size="1">
+
+                                                &nbsp;</font><font size="2">9/7/2000 </font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; " bgcolor="#FFFFCC"><font size="1">
+
+                                                <p align="center">
+
+                                                <input type="button" name="loc12"  onClick="window.open ('http://clerkpi.oklahomacounty.org/ImageLoad.aspx?sk=2000117855&ref=f4fad4de-55f4-4aac-8eca-e584f06d4ef8');" value=">" style="font-family:Times New Roman; color:#000000; font-size:8pt; float:center; font-weight:800" onClick="javascript: _gaq.push(['_trackPageview', '/downloads/View_Deed']); "></td>
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font size="2">
+
+                                                <a target="_blank" href="../glossary.htm#DE">
+
+                                                DE</a></font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font size="2">
+
+                                                7919-225</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="right"><font size="2">
+
+                                                          $29,000</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                OGLESBY RICHARD </font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                GARBUTT ROBERT C GARBUTT DONALD L & ERIKA E</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #C0C0C0; border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="right"><font size="1">
+
+                                                &nbsp;</font><font size="2">5/11/1998 </font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; " bgcolor="#FFFFCC"><font size="1">
+
+                                                <p align="center">
+
+                                                <input type="button" name="loc12"  onClick="window.open ('http://clerkpi.oklahomacounty.org/ImageLoad.aspx?sk=B73090364&ref=f4fad4de-55f4-4aac-8eca-e584f06d4ef8');" value=">" style="font-family:Times New Roman; color:#000000; font-size:8pt; float:center; font-weight:800" onClick="javascript: _gaq.push(['_trackPageview', '/downloads/View_Deed']); "></td>
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font size="2">
+
+                                                <a target="_blank" href="../glossary.htm#HIST">
+
+                                                HIST</a></font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font size="2">
+
+                                                7309-0364</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="right"><font size="2">
+
+                                                             $500</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                OGLESBY RICHARD & CAREY</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                OGLESBY RICHARD</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #C0C0C0; border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="right"><font size="1">
+
+                                                &nbsp;</font><font size="2">4/24/1992 </font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; " bgcolor="#FFFFCC"><font size="1">
+
+                                                <p align="center">
+
+                                                <input type="button" name="loc12"  onClick="window.open ('http://clerkpi.oklahomacounty.org/ImageLoad.aspx?sk=B62840079&ref=f4fad4de-55f4-4aac-8eca-e584f06d4ef8');" value=">" style="font-family:Times New Roman; color:#000000; font-size:8pt; float:center; font-weight:800" onClick="javascript: _gaq.push(['_trackPageview', '/downloads/View_Deed']); "></td>
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font size="2">
+
+                                                <a target="_blank" href="../glossary.htm#HIST">
+
+                                                HIST</a></font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font size="2">
+
+                                                6284-0079</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="right"><font size="2">
+
+                                                          $27,500</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                ROBINSON SHERRY I</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                OGLEBY RICHARD & CAREY</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #C0C0C0; border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="right"><font size="1">
+
+                                                &nbsp;</font><font size="2">8/25/1989 </font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; " bgcolor="#FFFFCC"><font size="1">
+
+                                                <p align="center">
+
+                                                <input type="button" name="loc12"  onClick="window.open ('http://clerkpi.oklahomacounty.org/ImageLoad.aspx?sk=B59500165&ref=f4fad4de-55f4-4aac-8eca-e584f06d4ef8');" value=">" style="font-family:Times New Roman; color:#000000; font-size:8pt; float:center; font-weight:800" onClick="javascript: _gaq.push(['_trackPageview', '/downloads/View_Deed']); "></td>
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font size="2">
+
+                                                <a target="_blank" href="../glossary.htm#HIST">
+
+                                                HIST</a></font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font size="2">
+
+                                                5950-0165</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="right"><font size="2">
+
+                                                          $23,500</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                RAILEY JOY LEE</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; ">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                ROBINSON SHERRY I</font></td>
+
+                                    </tr>
+
+                                    </tbody>
 
                         </table>
 
@@ -518,8 +1236,83 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
                         <tbody>
 
-                                    <tr><td colspan=8 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #C0C0C0; border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="right"><font size="2">&nbsp;1/8/1993 </font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0" align="center" bgcolor="#FFFFCC"><font size="1">
+
+                                                <input type="button" name="loc12"  onClick="window.open ('http://clerkpi.oklahomacounty.org/ImageLoad.aspx?sk=B63831393&ref=f4fad4de-55f4-4aac-8eca-e584f06d4ef8');" value=">" style="font-family:Times New Roman; color:#000000; font-size:8pt; float:center; font-weight:800" onClick="javascript: _gaq.push(['_trackPageview', '/downloads/View_Deed']); "></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font size="2">
+
+                                                <a target="_blank" href="../glossary.htm#HIST DOC">
+
+                                                HIST DOC</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font size="2">
+
+                                                6383-1393</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                OGLEBY RICHARD & CAREY</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                OGLESBY RICHARD & CAREY</font></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #C0C0C0; border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="right"><font size="2">&nbsp;1/1/1981 </font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0" align="center" bgcolor="#FFFFCC"><font size="1">
+
+                                                <input type="button" name="loc12"  onClick="window.open ('http://clerkpi.oklahomacounty.org/ImageLoad.aspx?sk=B47421249&ref=f4fad4de-55f4-4aac-8eca-e584f06d4ef8');" value=">" style="font-family:Times New Roman; color:#000000; font-size:8pt; float:center; font-weight:800" onClick="javascript: _gaq.push(['_trackPageview', '/downloads/View_Deed']); "></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font size="2">
+
+                                                <a target="_blank" href="../glossary.htm#HIST DOC">
+
+                                                HIST DOC</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font size="2">
+
+                                                4742-1249</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                &nbsp;</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                RAILEY JOY LEE</font></td>
+
+                                    </tr>
+
+                                    </tbody>
 
                         </table>
 
@@ -575,8 +1368,35 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
   <tbody>
 
-    <tr><td colspan=4 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+    <tr>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+      Capped Account</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+      2002</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+       </font></td>
+
+    </tr>
+
+    </tbody>
 
 </table>
 
@@ -632,8 +1452,63 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
   <tbody>
 
-    <tr><td colspan=20 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+    <tr>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <form name="form2">
+
+<p align="center">
+
+<input type="button" name="loc" onClick="go('http://www.oklahomacounty.org/assessor/searches/BldgDetail.asp?ACCOUNTNO=R150076390&BUILDING=1');" value="Bldg #1" style="float: left; font-family:Times New Roman; color:#000000; font-size:10pt"></p>
+
+      </form>
+
+      </td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      Ranch 1 Story</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      Residential</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      1950</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+                   756</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      1</font></td>
+
+    </tr>
+
+    </tbody>
 
 </table>
 

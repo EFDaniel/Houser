@@ -257,7 +257,7 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
       <td colspan="3" bgcolor="#394A7B" style="border-style:solid; border-width:0px; ">
 
-      <p align="right"><font color="#FFFFFF" size="2">Screen Produced &nbsp;&nbsp;3/12/2012 11:44:00 PM&nbsp;</font></td>
+      <p align="right"><font color="#FFFFFF" size="2">Screen Produced &nbsp;&nbsp;3/13/2012 12:18:20 PM&nbsp;</font></td>
 
       <td height="12" width="8" bgcolor="#FFFFFF">&nbsp;</td>
 
@@ -277,8 +277,7 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
                         <tbody>
 
-                                    <tr><td colspan=47 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+                                    <tr><td colspan=47 align="LEFT" width="100%">No records returned. Your account number was not found.  Please check your account number for accuracy.  The account may no longer be active or it may not be available until January 1, 2013.  Try another search option such as owner name or physical address.  Properties are also accessible through our Mapping/GIS site.</td></tr></tbody>
 
                         </table>
 
@@ -304,8 +303,7 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
                         <tbody>
 
-                                    <tr><td colspan=7 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+                                    <tr><td colspan=7 align="LEFT" width="100%">No Comparative Sales records returned.</td></tr></tbody>
 
                         </table>
 
@@ -361,8 +359,51 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
   <tbody>
 
-    <tr><td colspan=5 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+    <tr>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+      2/25/1999</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+                15,750</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+                 9,870</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+                     0</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+                 1,086</font></td>
+
+    </tr>
+
+    </tbody>
 
 </table>
 
@@ -447,8 +488,7 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
                         <tbody>
 
-                                    <tr><td colspan=9 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+                                    <tr><td colspan=9 align="LEFT" width="100%">No Sales Documents returned.</td></tr></tbody>
 
                         </table>
 
@@ -518,8 +558,45 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
                         <tbody>
 
-                                    <tr><td colspan=8 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+                                    <tr>
+
+                                                <td style="border-left: 1px solid #C0C0C0; border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="right"><font size="2">&nbsp;8/1/1977 </font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0" align="center" bgcolor="#FFFFCC"><font size="1">
+
+                                                <input type="button" name="loc12"  onClick="window.open ('http://clerkpi.oklahomacounty.org/ImageLoad.aspx?sk=B43920745&ref=f4fad4de-55f4-4aac-8eca-e584f06d4ef8');" value=">" style="font-family:Times New Roman; color:#000000; font-size:8pt; float:center; font-weight:800" onClick="javascript: _gaq.push(['_trackPageview', '/downloads/View_Deed']); "></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font size="2">
+
+                                                <a target="_blank" href="../glossary.htm#HIST DOC">
+
+                                                HIST DOC</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font size="2">
+
+                                                4392-0745</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                &nbsp;</font></td>
+
+                                                <td style="border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0">
+
+                                                <p align="center"><font style="font-size: 8pt">
+
+                                                XUYEN VAN DO & PHAN THI CAO</font></td>
+
+                                    </tr>
+
+                                    </tbody>
 
                         </table>
 
@@ -575,8 +652,35 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
   <tbody>
 
-    <tr><td colspan=4 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+    <tr>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+      Capped Account</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+      1999</font></td>
+
+      <td style="border: 1px solid #C0C0C0">
+
+      <p align="center">
+
+      <font size="2">
+
+       </font></td>
+
+    </tr>
+
+    </tbody>
 
 </table>
 
@@ -632,8 +736,119 @@ document.write(dayName[now.getDay()] + ", " + monName[now.getMonth()] + " " + no
 
   <tbody>
 
-    <tr><td colspan=20 color=#000000 bgcolor=#ffff00><tt><b>Database Results Error</b><br><i>Description:</i> [Oracle][ODBC][Ora]ORA-03114: not connected to ORACLE
-<br><i>Number:</i> -2147467259 (0x80004005)<br><i>Source:</i> Microsoft OLE DB Provider for ODBC Drivers<br></tt></td></tr></tbody>
+    <tr>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <form name="form2">
+
+<p align="center">
+
+<input type="button" name="loc" onClick="go('http://www.oklahomacounty.org/assessor/searches/BldgDetail.asp?ACCOUNTNO=R047245920&BUILDING=1');" value="Bldg #1" style="float: left; font-family:Times New Roman; color:#000000; font-size:10pt"></p>
+
+      </form>
+
+      </td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      Duplex One Story</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      Duplex</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      1925</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+                 1,827</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      1</font></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <form name="form2">
+
+<p align="center">
+
+<input type="button" name="loc" onClick="go('http://www.oklahomacounty.org/assessor/searches/BldgDetail.asp?ACCOUNTNO=R047245920&BUILDING=2');" value="Bldg #2" style="float: left; font-family:Times New Roman; color:#000000; font-size:10pt"></p>
+
+      </form>
+
+      </td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      Ranch 1 Story</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      Residential</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      1925</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+                 1,016</font></td>
+
+      <td style="border: 1px solid #C0C0C0" height="12">
+
+      <p align="center">
+
+      <font size="2">
+
+      1</font></td>
+
+    </tr>
+
+    </tbody>
 
 </table>
 

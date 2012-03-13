@@ -82,9 +82,11 @@ namespace houser
 
         private static string GetWebRequest(string url, string fileName)
         {
+            string workPath = @"C:\Users\Daniel\GitProjectsPersonal\Houser\houser\webCache\";
+            string homePath = @"F:\houser\houser\webCache\";
+            string pathToUse = System.Environment.MachineName == "RYAN-PC"? workPath : homePath;
 
-            //if (!File.Exists(@"C:\Users\Daniel\GitProjectsPersonal\Houser\houser\webCache\" + fileName + ".txt")) //work
-            if (!File.Exists(@"F:\houser\houser\webCache\" + fileName + ".txt"))
+            if (!File.Exists(pathToUse + fileName + ".txt"))
             {
             string strResults = "";
             WebResponse objResponse;
@@ -97,15 +99,13 @@ namespace houser
             {
                 strResults = sr.ReadToEnd();
                 sr.Close();
-                //System.IO.File.WriteAllText(@"C:\Users\Daniel\GitProjectsPersonal\Houser\houser\webCache\" + fileName + ".txt", strResults);  //work
-                System.IO.File.WriteAllText(@"F:\houser\houser\webCache\" + fileName + ".txt", strResults);
+                System.IO.File.WriteAllText(pathToUse + fileName + ".txt", strResults);
                 return strResults;
             }
             }
             else
             {
-                //return System.IO.File.ReadAllText(@"C:\Users\Daniel\GitProjectsPersonal\Houser\houser\webCache\" + fileName + ".txt"); // work
-                return System.IO.File.ReadAllText(@"F:\houser\houser\webCache\" + fileName + ".txt");
+                return System.IO.File.ReadAllText(pathToUse + fileName + ".txt");
             }
         }
 
@@ -116,11 +116,17 @@ namespace houser
         {
             string saleDate = ddlSaleDate.SelectedItem.Value.Replace("/", "%2f"); 
             Dictionary<string, Dictionary<int, Dictionary<string,string>>> CompletePropertyList = new Dictionary<string, Dictionary<int, Dictionary<string,string>>>(GetCompletePropertyList(saleDate));
-            foreach (var property in CompletePropertyList)
+            string red = "FF937A";
+            string green = "A0FF7A";
+            string orange = "FFA142";
+            string blue = "#42CAFF";
+            int propRate = -1;
+            foreach (KeyValuePair<string, Dictionary<int, Dictionary<string,string>>> property in CompletePropertyList)
             {
+                propRate = RateProps.CompareProp(property);
                 displayPanel.Controls.Add(new LiteralControl("<table class=\"Address\">"));
                 displayPanel.Controls.Add(new LiteralControl("<tr class=\"subjectProperty\">"));
-                displayPanel.Controls.Add(new LiteralControl("<td>"+property.Key+"</td></tr><tr class=\"property\">"));
+                displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#" + blue + "\">" + property.Key + "</td><td bgcolor=\"#" + red + "\">My Property Rank</td></tr><tr class=\"property\">"));
                 foreach (var field in property.Value)
                 {
                     
@@ -129,8 +135,17 @@ namespace houser
                         displayPanel.Controls.Add(new LiteralControl("<td>" + Convert.ToString(field.Key == 0 ? "Subject Property" : "Compare Property") + "</td></tr><tr class=\"fieldTitle\">"));
                         foreach (var f in field.Value)
                         {
-                            if (f.Key != "Plantiff" && f.Key != "Defendant" && f.Key != "Attorney" && f.Key != "Attorney Phone")
+                            if (f.Key != "Plantiff" && f.Key != "Defendant" && f.Key != "Attorney" && f.Key != "Attorney Phone" && f.Key != "Address")
+                            {
+                                if (f.Key == "SaleDate" || f.Key == "SalePrice")
+                                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#FFB691\">" + f.Key + "</td>"));
+                                else if (f.Key == "SaleDate1" || f.Key == "SalePrice1")
+                                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#A5D4A8\">" + f.Key + "</td>"));
+                                else if (f.Key == "SaleDate2" || f.Key == "SalePrice2")
+                                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#A5B6E8\">" + f.Key + "</td>"));
+                                else
                                 displayPanel.Controls.Add(new LiteralControl("<td>" + f.Key + "</td>"));
+                            }
                         }
                     }
                     displayPanel.Controls.Add(new LiteralControl("</tr><tr class=\"fieldValue\">"));
@@ -142,7 +157,7 @@ namespace houser
                             displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\" target=\"_blank\">See Tax Info</a></td>"));
                         else if (f.Key == "SimilarPropURL")
                             displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\">See Comps</a></td>"));
-                        else if (f.Key != "Plantiff" && f.Key != "Defendant" && f.Key != "Attorney" && f.Key != "Attorney Phone") 
+                        else if (f.Key != "Plantiff" && f.Key != "Defendant" && f.Key != "Attorney" && f.Key != "Attorney Phone" && f.Key != "Address") 
                             displayPanel.Controls.Add(new LiteralControl("<td>" + f.Value + "</td>"));
                     }
                     displayPanel.Controls.Add(new LiteralControl("</tr>"));

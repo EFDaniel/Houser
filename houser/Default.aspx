@@ -15,6 +15,7 @@
             onclick="btnPopulateData_Click"/>
         <asp:DropDownList ID="ddlSaleDate" runat="server" 
             onselectedindexchanged="ddlSaleDate_SelectedIndexChanged" />
+        <asp:CheckBox ID="chkNonLive" Text="Check to only show cached values" runat="server" />
     </div>
     <div id="displayData">
         <asp:Panel ID="displayPanel" runat="server">

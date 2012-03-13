@@ -14,11 +14,12 @@ namespace houser
 {
     public partial class _Default : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        public void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                string sheriffSaleDatePage = GetWebRequest("http://oklahomacounty.org/sheriff/SheriffSales/", "SheriffSales");
+                bool nonLiveData = chkNonLive.Checked;
+                string sheriffSaleDatePage = GetWebRequest("http://oklahomacounty.org/sheriff/SheriffSales/", "SheriffSales", nonLiveData);
                 List<string> dates = PageScraper.GetSheriffSaleDates(sheriffSaleDatePage);
                 foreach (var date in dates)
                 {
@@ -30,13 +31,13 @@ namespace houser
         /// <summary>
         /// Build the entire data structure for all properties.  Includes comparable data, property specs, ect.  03%2f15%2f2012
         /// </summary>
-        private static Dictionary<string, Dictionary<int, Dictionary<string, string>>> GetCompletePropertyList(string saleDate)
+        private static Dictionary<string, Dictionary<int, Dictionary<string, string>>> GetCompletePropertyList(string saleDate, bool nonLiveDataOnly)
         {
             Dictionary<string, Dictionary<int, Dictionary<string,string>>> allPropertyData = new Dictionary<string, Dictionary<int, Dictionary<string,string>>>();
             Dictionary<int, Dictionary<string, string>> allCoreDataTMP = new Dictionary<int, Dictionary<string, string>>();
             Dictionary<string, string> allFieldDataTMP = new Dictionary<string, string>();
             string sherifSaleUrl = "http://oklahomacounty.org/sheriff/SheriffSales/saledetail.asp?SaleDates="+saleDate;
-            string sherifSaleWebRequestData = GetWebRequest(sherifSaleUrl, saleDate);
+            string sherifSaleWebRequestData = GetWebRequest(sherifSaleUrl, saleDate, nonLiveDataOnly);
             string currentPropertyAddress = "No Address Found";
             Dictionary<int, Dictionary<string, string>> SheriffSaleProperties = PageScraper.Find(sherifSaleWebRequestData);
             
@@ -50,13 +51,13 @@ namespace houser
                 }
                 string propertyAccountURL = property.Value["8"];
                 string fileName = propertyAccountURL.Substring(67);
-                string propertyAssessorData = propertyAccountURL != "" ? GetWebRequest(propertyAccountURL, fileName) : "Error";
+                string propertyAssessorData = propertyAccountURL != "" ? GetWebRequest(propertyAccountURL, fileName, nonLiveDataOnly) : "Error";
                 Dictionary<string, string> scrapedData = new Dictionary<string, string>(PageScraper.GetPropertyData(propertyAssessorData));
                 foreach (var sdItem in scrapedData)
                 {
                     allFieldDataTMP.Add(sdItem.Key, sdItem.Value);
                 }
-                string similarPropertyData = scrapedData["SimilarPropURL"] != "" ? GetWebRequest(scrapedData["SimilarPropURL"], "C"+fileName) : "Error";
+                string similarPropertyData = scrapedData["SimilarPropURL"] != "" ? GetWebRequest(scrapedData["SimilarPropURL"], "C"+fileName, nonLiveDataOnly) : "Error";
                 Dictionary<int, Dictionary<string, string>> scrapedCoreData = new Dictionary<int, Dictionary<string, string>>(PageScraper.GetSimilarData(similarPropertyData));
                 int i = 0;
                 foreach (var scdItem in scrapedCoreData)
@@ -77,37 +78,50 @@ namespace houser
             }
             return allPropertyData;
         }
-
+        
         
 
-        private static string GetWebRequest(string url, string fileName)
+        public static string GetWebRequest(string url, string fileName, bool nonLiveDataOnly)
         {
             string workPath = @"C:\Users\Daniel\GitProjectsPersonal\Houser\houser\webCache\";
             string homePath = @"F:\houser\houser\webCache\";
             string pathToUse = System.Environment.MachineName == "RYAN-PC"? workPath : homePath;
 
-            if (!File.Exists(pathToUse + fileName + ".txt"))
+            if (!File.Exists(pathToUse + fileName + ".txt") || fileName == "xxSheriffSales")
+            if(!nonLiveDataOnly)
             {
-            string strResults = "";
-            WebResponse objResponse;
-            WebRequest objRequest = System.Net.HttpWebRequest.Create(url);
+                string strResults = "";
+                WebResponse objResponse;
+                WebRequest objRequest = System.Net.HttpWebRequest.Create(url);
 
-            objResponse = objRequest.GetResponse();
-            
-            
-            using (StreamReader sr = new StreamReader(objResponse.GetResponseStream()))
-            {
-                strResults = sr.ReadToEnd();
-                sr.Close();
-                System.IO.File.WriteAllText(pathToUse + fileName + ".txt", strResults);
-                return strResults;
+                try
+                {
+                    objResponse = objRequest.GetResponse();
+
+
+                    using (StreamReader sr = new StreamReader(objResponse.GetResponseStream()))
+                    {
+                        strResults = sr.ReadToEnd();
+                        sr.Close();
+                        System.IO.File.WriteAllText(pathToUse + fileName + ".txt", strResults);
+                        return strResults;
+                    }
+                }
+                catch { return ""; }
             }
+            else
+            {
+                if (File.Exists(pathToUse + fileName + ".txt"))
+                    return System.IO.File.ReadAllText(pathToUse + fileName + ".txt");
+                else
+                    return "";
+
             }
             else
             {
                 return System.IO.File.ReadAllText(pathToUse + fileName + ".txt");
             }
-        }
+            }
 
         #region UI events
         
@@ -115,56 +129,68 @@ namespace houser
         protected void btnPopulateData_Click(object sender, EventArgs e)
         {
             string saleDate = ddlSaleDate.SelectedItem.Value.Replace("/", "%2f"); 
-            Dictionary<string, Dictionary<int, Dictionary<string,string>>> CompletePropertyList = new Dictionary<string, Dictionary<int, Dictionary<string,string>>>(GetCompletePropertyList(saleDate));
+            Dictionary<string, Dictionary<int, Dictionary<string,string>>> CompletePropertyList = new Dictionary<string, Dictionary<int, Dictionary<string,string>>>(GetCompletePropertyList(saleDate, chkNonLive.Checked));
             string red = "FF937A";
             string green = "A0FF7A";
             string orange = "FFA142";
             string blue = "#42CAFF";
-            int propRate = -1;
+            string purple = "#000000";
+            string color = red;
+            int ppsftDiff = -1;
             foreach (KeyValuePair<string, Dictionary<int, Dictionary<string,string>>> property in CompletePropertyList)
             {
-                propRate = RateProps.CompareProp(property);
-                displayPanel.Controls.Add(new LiteralControl("<table class=\"Address\">"));
-                displayPanel.Controls.Add(new LiteralControl("<tr class=\"subjectProperty\">"));
-                displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#" + blue + "\">" + property.Key + "</td><td bgcolor=\"#" + red + "\">My Property Rank</td></tr><tr class=\"property\">"));
-                foreach (var field in property.Value)
+                try
                 {
-                    
-                    if (field.Key < 2)
+                    color = red;
+                    ppsftDiff = RateProps.CompareProp(property.Value);
+                    if (ppsftDiff > -10)
+                        color = orange;
+                    if (ppsftDiff > -5)
+                        color = green;
+                    if (ppsftDiff > 100)
+                        color = purple;
+                    displayPanel.Controls.Add(new LiteralControl("<table class=\"Address\">"));
+                    displayPanel.Controls.Add(new LiteralControl("<tr class=\"subjectProperty\">"));
+                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#" + blue + "\">" + property.Key + "</td><td class=\"priceRank\" bgcolor=\"#" + color + "\">" + ppsftDiff + "</td></tr><tr class=\"property\">"));
+                    foreach (var field in property.Value)
                     {
-                        displayPanel.Controls.Add(new LiteralControl("<td>" + Convert.ToString(field.Key == 0 ? "Subject Property" : "Compare Property") + "</td></tr><tr class=\"fieldTitle\">"));
-                        foreach (var f in field.Value)
+
+                        if (field.Key < 2)
                         {
-                            if (f.Key != "Plantiff" && f.Key != "Defendant" && f.Key != "Attorney" && f.Key != "Attorney Phone" && f.Key != "Address")
+                            displayPanel.Controls.Add(new LiteralControl("<td>" + Convert.ToString(field.Key == 0 ? "Subject Property" : "Compare Property") + "</td></tr><tr class=\"fieldTitle\">"));
+                            foreach (var f in field.Value)
                             {
-                                if (f.Key == "SaleDate" || f.Key == "SalePrice")
-                                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#FFB691\">" + f.Key + "</td>"));
-                                else if (f.Key == "SaleDate1" || f.Key == "SalePrice1")
-                                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#A5D4A8\">" + f.Key + "</td>"));
-                                else if (f.Key == "SaleDate2" || f.Key == "SalePrice2")
-                                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#A5B6E8\">" + f.Key + "</td>"));
-                                else
-                                displayPanel.Controls.Add(new LiteralControl("<td>" + f.Key + "</td>"));
+                                if (f.Key != "Plantiff" && f.Key != "Defendant" && f.Key != "Attorney" && f.Key != "Attorney Phone" && f.Key != "Address")
+                                {
+                                    if (f.Key == "SaleDate" || f.Key == "SalePrice")
+                                        displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#FFB691\">" + f.Key + "</td>"));
+                                    else if (f.Key == "SaleDate1" || f.Key == "SalePrice1")
+                                        displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#A5D4A8\">" + f.Key + "</td>"));
+                                    else if (f.Key == "SaleDate2" || f.Key == "SalePrice2")
+                                        displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#A5B6E8\">" + f.Key + "</td>"));
+                                    else
+                                        displayPanel.Controls.Add(new LiteralControl("<td>" + f.Key + "</td>"));
+                                }
                             }
                         }
-                    }
-                    displayPanel.Controls.Add(new LiteralControl("</tr><tr class=\"fieldValue\">"));
-                    foreach (var f in field.Value)
-                    {
-                        if (f.Key == "8")
-                            displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\" target=\"_blank\">See Assessors Page</a></td>"));
-                        else if (f.Key == "9")
-                            displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\" target=\"_blank\">See Tax Info</a></td>"));
-                        else if (f.Key == "SimilarPropURL")
-                            displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\">See Comps</a></td>"));
-                        else if (f.Key != "Plantiff" && f.Key != "Defendant" && f.Key != "Attorney" && f.Key != "Attorney Phone" && f.Key != "Address") 
-                            displayPanel.Controls.Add(new LiteralControl("<td>" + f.Value + "</td>"));
+                        displayPanel.Controls.Add(new LiteralControl("</tr><tr class=\"fieldValue\">"));
+                        foreach (var f in field.Value)
+                        {
+                            if (f.Key == "8")
+                                displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\" target=\"_blank\">See Assessors Page</a></td>"));
+                            else if (f.Key == "9")
+                                displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\" target=\"_blank\">See Tax Info</a></td>"));
+                            else if (f.Key == "SimilarPropURL")
+                                displayPanel.Controls.Add(new LiteralControl("<td><a href=\"" + f.Value + "\">See Comps</a></td>"));
+                            else if (f.Key != "Plantiff" && f.Key != "Defendant" && f.Key != "Attorney" && f.Key != "Attorney Phone" && f.Key != "Address")
+                                displayPanel.Controls.Add(new LiteralControl("<td>" + f.Value + "</td>"));
+                        }
+                        displayPanel.Controls.Add(new LiteralControl("</tr>"));
                     }
                     displayPanel.Controls.Add(new LiteralControl("</tr>"));
+                    displayPanel.Controls.Add(new LiteralControl("</table>"));
                 }
-                displayPanel.Controls.Add(new LiteralControl("</tr>"));
-                displayPanel.Controls.Add(new LiteralControl("</table>"));
-                
+                catch { }
 
             }
         }

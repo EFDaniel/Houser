@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
+using System.Linq;
+
 
 namespace houser.utilities
 {
@@ -71,6 +73,69 @@ namespace houser.utilities
                 return 999;
             else
                 return Convert.ToInt32((S_SheriffValue/S_SQFT)-weightedPPSQFT);
+        }
+
+        public static double[,] GetProprtyValueByComps(Dictionary<int, Dictionary<string, string>> property)
+        {
+            double[,] avgSaleList = new double[1,2];
+            Dictionary<double, double> reliablityRankedList = new Dictionary<double, double>();
+            int S_SheriffValue = Convert.ToInt32(property[0]["Appraisal Value"]);
+            double S_SalePrice = Convert.ToDouble(property[0].ContainsKey("SalePrice") ? property[0]["SalePrice"].Replace("$", string.Empty).Replace(",", string.Empty) : "0");
+            DateTime S_SaleDate = Convert.ToDateTime(property[0].ContainsKey("SaleDate") ? property[0]["SaleDate"] : "01/01/1901");
+            int S_SQFT = Convert.ToInt32(property[0].ContainsKey("SQFT") ? property[0]["SQFT"].Replace(",", string.Empty) : "0");
+            int S_Beds = Convert.ToInt32(property[0].ContainsKey("Bedrooms") ? property[0]["Bedrooms"] : "0");
+            double S_Baths = Convert.ToDouble(property[0].ContainsKey("Bathrooms") ? property[0]["Bathrooms"] : "0");
+            int S_YearBuilt = Convert.ToInt32(property[0]["YearBuilt"]);
+
+            // Worker variables
+            int Index = 1;
+            int reliabilty = 0;
+            double averagedSalePrice = -1;
+            double bankMaxBidEsitmate = -1;
+            // Compare Property
+            DateTime C_SaleDate;
+            double C_SalePrice = -1;
+            int C_SQFT = -1;
+            double C_Beds = -1;
+            double C_Baths = -1;
+            int C_YearBuilt = Convert.ToInt32(property[0].ContainsKey("YearBuilt"));
+            while (property.Count > Index)
+            {
+                reliabilty = 0;
+                C_SaleDate = Convert.ToDateTime(property[Index]["C_SaleDate"]);
+                C_SQFT = Convert.ToInt32(property[Index]["C_SQFT"].Replace(",", string.Empty));
+                C_SalePrice = (Convert.ToDouble(property[Index]["C_SalePrice"].Replace(",", string.Empty)));
+                C_Beds = Convert.ToDouble(property[Index]["C_Bedrooms"]);
+                C_Baths = Convert.ToDouble(property[Index]["C_Bathrooms"]);
+                C_YearBuilt = Convert.ToInt32(property[Index]["C_YearBuilt"]);
+
+                if (Math.Abs(C_YearBuilt - S_YearBuilt) < 5)
+                    reliabilty += 4;
+                if (Math.Abs(C_SQFT - S_SQFT) < 150)
+                    reliabilty += 2;
+                else if (Math.Abs(C_SQFT - S_SQFT) < 250)
+                    reliabilty += 1;
+                if (Math.Abs(C_Beds - S_Beds) == 0)
+                    reliabilty += 2;
+                else if (Math.Abs(C_Beds - S_Beds) < 1)
+                    reliabilty += 1;
+                if (Math.Abs(C_Baths - S_Baths) == 0)
+                    reliabilty += 2;
+                else if (Math.Abs(C_Baths - S_Baths) < 1)
+                    reliabilty += 1;
+                //  need to do something more than =1 to keep from duplicate keys.
+                reliablityRankedList.Add(reliablityRankedList.ContainsKey(reliabilty)? reliabilty + 1 : reliabilty, C_SalePrice);
+
+                Index++;
+            }
+            double avgReliability = reliablityRankedList.OrderByDescending(x => x.Key).First().Key;
+            double avgSalePrice = reliablityRankedList.OrderByDescending(x => x.Key).First().Value;
+            reliablityRankedList.Remove(avgReliability);
+            avgReliability += reliablityRankedList.OrderByDescending(x => x.Key).First().Key;
+            avgSalePrice += reliablityRankedList.OrderByDescending(x => x.Key).First().Value;
+            avgSaleList[0,0] = Convert.ToInt32(avgReliability/2);
+            avgSaleList[0,1] = Convert.ToInt32(avgSalePrice/2);
+            return avgSaleList;
         }
     }
 }

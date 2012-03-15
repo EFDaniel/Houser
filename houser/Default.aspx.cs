@@ -128,30 +128,40 @@ namespace houser
 
         protected void btnPopulateData_Click(object sender, EventArgs e)
         {
-            string saleDate = ddlSaleDate.SelectedItem.Value.Replace("/", "%2f"); 
-            Dictionary<string, Dictionary<int, Dictionary<string,string>>> CompletePropertyList = new Dictionary<string, Dictionary<int, Dictionary<string,string>>>(GetCompletePropertyList(saleDate, chkNonLive.Checked));
+            BuildSheriffSalePropertyList();
+        }
+
+        private void BuildSheriffSalePropertyList()
+        {
+            string saleDate = ddlSaleDate.SelectedItem.Value.Replace("/", "%2f");
+            Dictionary<string, Dictionary<int, Dictionary<string, string>>> CompletePropertyList = new Dictionary<string, Dictionary<int, Dictionary<string, string>>>(GetCompletePropertyList(saleDate, chkNonLive.Checked));
             string red = "FF937A";
             string green = "A0FF7A";
             string orange = "FFA142";
             string blue = "#42CAFF";
             string purple = "#000000";
             string color = red;
-            int ppsftDiff = -1;
-            foreach (KeyValuePair<string, Dictionary<int, Dictionary<string,string>>> property in CompletePropertyList)
+            double avgSalePrice = -1;
+            double avgReliability = -1;
+            double[,] avgSalePriceAndReliability = new double[1,2];
+            foreach (KeyValuePair<string, Dictionary<int, Dictionary<string, string>>> property in CompletePropertyList)
             {
                 try
                 {
                     color = red;
-                    ppsftDiff = RateProps.CompareProp(property.Value);
-                    if (ppsftDiff > -10)
-                        color = orange;
-                    if (ppsftDiff > -5)
-                        color = green;
-                    if (ppsftDiff > 100)
-                        color = purple;
+                    //ppsftDiff = RateProps.CompareProp(property.Value);
+                    try
+                    {
+                        avgSalePriceAndReliability = RateProps.GetProprtyValueByComps(property.Value);
+                        avgSalePrice = avgSalePriceAndReliability[0, 1];
+                        avgReliability = avgSalePriceAndReliability[0, 0];
+                        
+                    }
+                    catch { avgSalePrice = 0; }
+                    
                     displayPanel.Controls.Add(new LiteralControl("<table class=\"Address\">"));
                     displayPanel.Controls.Add(new LiteralControl("<tr class=\"subjectProperty\">"));
-                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#" + blue + "\">" + property.Key + "</td><td class=\"priceRank\" bgcolor=\"#" + color + "\">" + ppsftDiff + "</td><td>Minimum Bid = " + Convert.ToString(Convert.ToDouble((property.Value[0]["Appraisal Value"]))*.66) + "</tr><tr class=\"property\">"));
+                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#" + blue + "\">" + property.Key + "</td><td class=\"priceRank\" bgcolor=\"#" + color + "\">" + avgSalePrice + "</td><td>Minimum Bid = " + Convert.ToString(Convert.ToDouble((property.Value[0]["Appraisal Value"])) * .66) + "</tr><tr class=\"property\">"));
                     foreach (var field in property.Value)
                     {
 

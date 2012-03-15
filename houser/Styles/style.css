@@ -5,3 +5,5 @@
 .fieldTitle { border-bottom: 4px solid black;font-weight:bold;}
 tr {padding:10px; background-color: #DCDCDC;}
 table { padding: 15px; border-bottom-width:4px;}
+.collapsed { display:none;}
+.subjectProperty:hover {cursor: pointer; cursor: hand}

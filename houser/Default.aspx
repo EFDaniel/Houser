@@ -6,6 +6,7 @@
 <head runat="server">
     <title>Houser App</title>
     <link href="Styles/style.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
 </head>
 <body>
     <form id="form1" runat="server" visible="true">
@@ -22,6 +23,17 @@
         </asp:Panel>
     </div>
     </form>
-    
+    <script>
+        $(document).ready(function () {
+            var self = $(".subjectProperty").parent();
+            self.children().toggleClass("collapsed");
+            self.children('.subjectProperty').toggleClass("collapsed");
+            $(".subjectProperty").click(function () {
+                var self = $(this).parent();
+                self.children().toggleClass("collapsed");
+                self.children('.subjectProperty').toggleClass("collapsed");
+            });
+        });
+    </script>
 </body>
 </html>

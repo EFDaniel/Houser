@@ -78,9 +78,11 @@ namespace houser
             }
             return allPropertyData;
         }
-        
-        
 
+
+        /// <summary>
+        /// Request the webpage as a string.
+        /// </summary>
         public static string GetWebRequest(string url, string fileName, bool nonLiveDataOnly)
         {
             string workPath = @"C:\Users\Daniel\GitProjectsPersonal\Houser\houser\webCache\";
@@ -122,24 +124,19 @@ namespace houser
                 return System.IO.File.ReadAllText(pathToUse + fileName + ".txt");
             }
             }
-
-        #region UI events
         
-
-        protected void btnPopulateData_Click(object sender, EventArgs e)
-        {
-            BuildSheriffSalePropertyList();
-        }
-
+        /// <summary>
+        /// Builds the view of properties.
+        /// </summary>
         private void BuildSheriffSalePropertyList()
         {
             string saleDate = ddlSaleDate.SelectedItem.Value.Replace("/", "%2f");
             Dictionary<string, Dictionary<int, Dictionary<string, string>>> CompletePropertyList = new Dictionary<string, Dictionary<int, Dictionary<string, string>>>(GetCompletePropertyList(saleDate, chkNonLive.Checked));
-            string red = "FF937A";
-            string green = "A0FF7A";
-            string orange = "FFA142";
-            string blue = "#42CAFF";
-            string purple = "#000000";
+            string red = "red";
+            string green = "green";
+            string orange = "orange";
+            string blue = "blue";
+            string yellow = "yellow";
             string color = red;
             double avgSalePrice = -1;
             double avgReliability = -1;
@@ -152,16 +149,28 @@ namespace houser
                     //ppsftDiff = RateProps.CompareProp(property.Value);
                     try
                     {
+                        avgSalePriceAndReliability[0, 0] = 0;
+                        avgSalePriceAndReliability[0, 1] = 0;
+                        avgSalePrice = 0;
+                        avgReliability = 0;
                         avgSalePriceAndReliability = RateProps.GetProprtyValueByComps(property.Value);
                         avgSalePrice = avgSalePriceAndReliability[0, 1];
                         avgReliability = avgSalePriceAndReliability[0, 0];
+                        if (avgReliability > 7)
+                            color = yellow;
+                        if (avgReliability > 8)
+                            color = orange;
+                        if (avgReliability > 9)
+                            color = green;
+                        
+                        
                         
                     }
                     catch { avgSalePrice = 0; }
                     
                     displayPanel.Controls.Add(new LiteralControl("<table class=\"Address\">"));
                     displayPanel.Controls.Add(new LiteralControl("<tr class=\"subjectProperty\">"));
-                    displayPanel.Controls.Add(new LiteralControl("<td bgcolor=\"#" + blue + "\">" + property.Key + "</td><td class=\"priceRank\" bgcolor=\"#" + color + "\">" + avgSalePrice + "</td><td>Minimum Bid = " + Convert.ToString(Convert.ToDouble((property.Value[0]["Appraisal Value"])) * .66) + "</tr><tr class=\"property\">"));
+                    displayPanel.Controls.Add(new LiteralControl("<td class=\"" + blue + "\">" + property.Key + "</td><td class=\"priceRank " + color + "\">Avg Sale Price  " + avgSalePrice + "</td><td class=\"reliability " + color + "\">Reliability of comps  " + avgReliability + "</td><td>Minimum Bid = " + Convert.ToString(Convert.ToDouble((property.Value[0]["Appraisal Value"])) * .66) + "</tr><tr class=\"property\">"));
                     foreach (var field in property.Value)
                     {
 
@@ -203,6 +212,14 @@ namespace houser
                 catch { }
 
             }
+        }
+        
+
+        #region UI events
+
+        protected void btnPopulateData_Click(object sender, EventArgs e)
+        {
+            BuildSheriffSalePropertyList();
         }
 
         protected void ddlSaleDate_SelectedIndexChanged(object sender, EventArgs e)

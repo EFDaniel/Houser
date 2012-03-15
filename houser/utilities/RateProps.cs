@@ -89,9 +89,7 @@ namespace houser.utilities
 
             // Worker variables
             int Index = 1;
-            int reliabilty = 0;
-            double averagedSalePrice = -1;
-            double bankMaxBidEsitmate = -1;
+            double reliabilty = 0;
             // Compare Property
             DateTime C_SaleDate;
             double C_SalePrice = -1;
@@ -124,8 +122,11 @@ namespace houser.utilities
                 else if (Math.Abs(C_Baths - S_Baths) < 1)
                     reliabilty += 1;
                 //  need to do something more than =1 to keep from duplicate keys.
-                reliablityRankedList.Add(reliablityRankedList.ContainsKey(reliabilty)? reliabilty + 1 : reliabilty, C_SalePrice);
-
+                while (reliablityRankedList.ContainsKey(reliabilty))
+                {
+                    reliabilty += .01;
+                }
+                reliablityRankedList.Add(reliabilty, C_SalePrice);
                 Index++;
             }
             double avgReliability = reliablityRankedList.OrderByDescending(x => x.Key).First().Key;
@@ -133,8 +134,10 @@ namespace houser.utilities
             reliablityRankedList.Remove(avgReliability);
             avgReliability += reliablityRankedList.OrderByDescending(x => x.Key).First().Key;
             avgSalePrice += reliablityRankedList.OrderByDescending(x => x.Key).First().Value;
-            avgSaleList[0,0] = Convert.ToInt32(avgReliability/2);
+            avgSaleList[0, 0] = avgSalePrice != 0 ? Convert.ToInt32(avgReliability / 2) : 0;
             avgSaleList[0,1] = Convert.ToInt32(avgSalePrice/2);
+            avgReliability = 0;
+            avgSalePrice = 0;
             return avgSaleList;
         }
     }

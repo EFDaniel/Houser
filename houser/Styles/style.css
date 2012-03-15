@@ -4,6 +4,13 @@
 .Address {border: 1px solid black; text-align:center; padding:10px;}
 .fieldTitle { border-bottom: 4px solid black;font-weight:bold;}
 tr {padding:10px; background-color: #DCDCDC;}
+td { border: 2px solid white;}
 table { padding: 15px; border-bottom-width:4px;}
 .collapsed { display:none;}
+.subjectProperty td {width: 200px; padding: 5px;}
 .subjectProperty:hover {cursor: pointer; cursor: hand}
+.red { background-color:#BA3838;}
+.green { background-color:#5DB360;}
+.blue { background-color:#5D7EB3;}
+.yellow { background-color:#E3E152;}
+.orange { background-color:#E8A13C;}
